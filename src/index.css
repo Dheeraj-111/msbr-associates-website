@@ -1,0 +1,115 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-navy: #071b36;
+  --color-navy-800: #0a2545;
+  --color-navy-700: #0e2f57;
+  --color-navy-600: #143a68;
+  --color-gold: #d4af37;
+  --color-gold-light: #e6c75a;
+  --color-gold-dark: #b8941f;
+  --color-cream: #faf8f2;
+  --color-ink: #0b1622;
+
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+
+  --shadow-glow: 0 0 40px -8px rgba(212, 175, 55, 0.45);
+  --shadow-card: 0 18px 50px -20px rgba(7, 27, 54, 0.35);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background-color: #ffffff;
+    color: var(--color-navy);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: var(--color-navy);
+  }
+}
+
+@layer utilities {
+  .container-xl {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-xl {
+      padding-inline: 2rem;
+    }
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(120deg, #e6c75a 0%, #d4af37 45%, #b8941f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-light {
+    background: #ffffff;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(7, 27, 54, 0.06);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .gold-divider {
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #071b36;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
