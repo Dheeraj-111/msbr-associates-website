@@ -49,6 +49,10 @@
   }
 }
 
+button{
+  cursor: pointer;
+}
+
 @layer utilities {
   .container-xl {
     width: 100%;
@@ -112,4 +116,11 @@
   html {
     scroll-behavior: auto;
   }
+}
+
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: clip;
 }

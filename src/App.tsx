@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
+
 import Preloader from "./components/Preloader";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -20,21 +21,27 @@ import CertificateVerification from "./components/CertificateVerification";
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  const params = new URLSearchParams(window.location.search);
-  const certificateId = params.get("id");
-
   const isVerificationPage = window.location.pathname === "/verify";
 
   useEffect(() => {
     if (isVerificationPage) {
       document.body.style.overflow = "auto";
-      return;
+      document.documentElement.style.overflow = "auto";
+
+      return () => {
+        document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
+      };
     }
 
     document.body.style.overflow = loading ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [loading, isVerificationPage]);
 
-  if (certificateId) {
+  if (isVerificationPage) {
     return <CertificateVerification />;
   }
 
@@ -61,6 +68,7 @@ export default function App() {
       </main>
 
       <Footer />
+
       <FloatingWhatsApp />
     </>
   );

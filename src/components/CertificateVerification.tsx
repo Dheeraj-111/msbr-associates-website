@@ -1,8 +1,18 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { ShieldCheck, ShieldX, Printer, Search } from "lucide-react";
 import { certificates } from "../data/certificates";
+import { ArrowLeft } from "lucide-react";
 
 export default function CertificateVerification() {
+  useEffect(() => {
+    document.body.style.overflow = "auto";
+    document.documentElement.style.overflow = "auto";
+
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, []);
   const searchParams = new URLSearchParams(window.location.search);
 
   const certificateId = searchParams.get("id") || "";
@@ -24,8 +34,17 @@ export default function CertificateVerification() {
   };
 
   return (
-    <section className="min-h-screen bg-slate-50 py-16 px-4">
+    <section className="min-h-[100dvh] bg-slate-50 py-16 px-4 overflow-x-hidden">
       <div className="mx-auto max-w-5xl">
+        <button
+          onClick={() => {
+            window.location.href = "/";
+          }}
+          className="mb-6 flex items-center gap-2 text-[#071B36] hover:text-[#D4AF37] transition-colors"
+        >
+          <ArrowLeft size={18} />
+          Back to Home
+        </button>
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-[#071B36] mb-2">
