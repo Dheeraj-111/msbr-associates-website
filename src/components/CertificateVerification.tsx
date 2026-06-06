@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ShieldCheck, ShieldX, Download, Printer, Search } from "lucide-react";
+import { ShieldCheck, ShieldX, Printer, Search } from "lucide-react";
 import { certificates } from "../data/certificates";
 
 export default function CertificateVerification() {
