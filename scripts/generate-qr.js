@@ -28,7 +28,7 @@ if (!fs.existsSync(outputDir)) {
 async function generateQRCodes() {
   for (const id of certificates) {
     const verificationUrl =
-      `https://msbr-associates.vercel.app/3/verify?id=${id}`;
+      `https://msbr-associates.vercel.app/verify?id=${id}`;
 
     const outputFile =
       path.join(outputDir, `${id}.png`);
